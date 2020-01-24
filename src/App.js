@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import List from './components/List';
+import Task from './components/Task';
+import NewTaskForm from './components/NewTaskForm';
 
 function App() {
+  const [tasks, newTask] = useState([{}]);
+  const addTask = task => {newTask([...tasks, task])};
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>My To Do List</h1>
+      <NewTaskForm handleNewTask={addTask}/>
+      <List title={"Remaining"} tasks={tasks.filter(task=>!task.done)}/>
+      <List title={"Completed"} tasks={tasks.filter(task=>task.done)}/>
+      <Task/>
     </div>
   );
 }
