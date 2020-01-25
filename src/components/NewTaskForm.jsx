@@ -18,6 +18,9 @@ function NewTaskForm(props) {
                     onChange={event=>setNewTask(event.target.value)}
                     type="text"
                 />
+                <button onSubmit={addTask}>
+                    Add Text
+                </button>
             </form>
         </div>
     )
