@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import './App.css';
 import List from './components/List';
-import Task from './components/Task';
 import NewTaskForm from './components/NewTaskForm';
 
 function App() {
-  const [tasks, newTask] = useState([{}]);
-  const addTask = task => {newTask([...tasks, task])};
+  const [tasks, setTask] = useState([]);
+  const addTask = task => {
+    let newTask = {
+      completed: false,
+      taskText: task
+    }
+    setTask([...tasks, newTask])
+  };
 
   return (
     <div className="App">
@@ -14,7 +18,6 @@ function App() {
       <NewTaskForm handleNewTask={addTask}/>
       <List title={"Remaining"} tasks={tasks.filter(task=>!task.done)}/>
       <List title={"Completed"} tasks={tasks.filter(task=>task.done)}/>
-      <Task/>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Task({props}) {
+function Task(props) {
     return(
         <div>
             <input type="checkbox"></input>
-            <span></span>
+            <span>{props.taskText}</span>
         </div>
     )
 }

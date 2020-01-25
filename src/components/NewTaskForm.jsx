@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 function NewTaskForm(props) {
-    const [newTask, saveTask] = useState('');
-    const addTask = () => {
-        console.log()
-        // props.handleNewTask();
+    const [newTask, setNewTask] = useState('');
+    const addTask = (event) => {
+        event.preventDefault();
+        props.handleNewTask(newTask);
+        setNewTask('');
     }
 
     return(
@@ -14,7 +15,7 @@ function NewTaskForm(props) {
                 <input
                     placeholder="Enter a new task"
                     value={newTask}
-                    onChange={event=>saveTask(event.target.value)}
+                    onChange={event=>setNewTask(event.target.value)}
                     type="text"
                 />
             </form>
