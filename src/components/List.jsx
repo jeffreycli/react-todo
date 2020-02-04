@@ -5,7 +5,10 @@ function List(props) {
     const taskList = props.tasks.map(task => {
         return(
             <div key={task.id}>
-                <Task switchList={props.handleCompletion} {...task}/>
+                <Task
+                    handleClick = {props.handleClick}
+                    taskObject = {task}
+                />
             </div>
         )
     })
