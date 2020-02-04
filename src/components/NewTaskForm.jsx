@@ -11,9 +11,8 @@ function NewTaskForm(props) {
     return(
         <div>
             <form onSubmit={addTask}>
-                <span>New Task: </span>
                 <input
-                    placeholder="Enter a new task"
+                    placeholder="What needs to get done?"
                     value={newTask}
                     onChange={event=>setNewTask(event.target.value)}
                     type="text"
