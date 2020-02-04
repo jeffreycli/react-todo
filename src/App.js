@@ -21,10 +21,14 @@ function App() {
     setTask([...tasks, newTask]);
   };
 
-  // Existing bugs: checking and unchecking adds twice instead of removing
-  const addToSelected = task => {
-    let newSelectedTasks = [...selectedTasks, task];
-    setSelectedTasks(newSelectedTasks);
+  const addToSelected = selectedTask => {
+    if (selectedTasks.includes(selectedTask)) {
+      let newSelectedTasks = selectedTasks.filter(task => task !== selectedTask);
+      setSelectedTasks(newSelectedTasks);
+    } else {
+      let newSelectedTasks = [...selectedTasks, selectedTask];
+      setSelectedTasks(newSelectedTasks);
+    }
   }
 
   const handleCompletion = () => {
