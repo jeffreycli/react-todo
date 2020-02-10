@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import List from './components/List';
 import NewTaskForm from './components/NewTaskForm';
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const [tasks, setTask] = useState([
@@ -11,6 +12,9 @@ function App() {
     {id: 0.5, completed: false, taskText: "Pilot training"}
   ]);
   const [selectedTasks, setSelectedTasks] = useState([]);
+  const tasksFromRedux = useSelector(state => console.log(state));
+  const dispatch = useDispatch();
+
 
   const addTask = task => {
     let newTask = {
